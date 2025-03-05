@@ -5,24 +5,24 @@ from django.db import models
 
 
 #Table Produits
-class Produits(models.Model):
+class Produit(models.Model):
     name = models.CharField(max_length=250)
     prix = models.FloatField()
 
 
 #Table Users
 
-class Users(models.Model):
+class User(models.Model):
     name = models.CharField(max_length=250)
     adress = models.CharField(max_length=500)
     type = models.CharField(max_length=10)
 
 
 #Table Factures
-class Factures(models.Model):
+class Facture(models.Model):
     creation_date = models.DateField(auto_now_add=True)
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Produits)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Produit)
     products_quantity = models.CharField(max_length=250)
     total_price = models.FloatField()
 
