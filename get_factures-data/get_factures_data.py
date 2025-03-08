@@ -27,10 +27,10 @@ for facture_link in factures_links:
     
     text = reader.readtext(image, detail = 0) #si detail etait a 0 alors j'aurai juste le texte sans les coordonnées
     print(text)
-    data = {
-        "text" : text,
-    }
+
     images_text.append(text)
+
+
 
 #sauvegarde en csv des données reccupérée
 with open('ocr_facture/get_factures-data/factures_data.csv', 'w') as file:
