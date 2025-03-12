@@ -111,6 +111,14 @@ def get_invoice_total(datas):
         else:
             print('no match')
 
+def get_facture_data_pipeline(data_):
+    facture_text = data_['text']
+    facture_text_list = data_['text'].lower().replace("]", "l").split('\n')
+    facture_datas=  {
+        "id": get_invoice_id(facture_text_list)
+    }
+
+
 
 
 if __name__ == "__main__":

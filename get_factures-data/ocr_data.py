@@ -24,7 +24,7 @@ for facture_link_id in root.findall('.//Name'):
 images_text = []
 
 
-reader = easyocr.Reader(['en'])
+reader = easyocr.Reader(['en']) 
 for facture_link in factures_links:
     response = requests.get(facture_link).content
     # Convertir les données d'image en tableau NumPy
