@@ -119,10 +119,11 @@
     <main>
         <section class="create-invoices">
             <div class="invoices-forms container">
-                <form action="" class="invoice-form-file">
+                <form action="{% url 'add-invoice2' %}" method="POST" enctype="multipart/form-data" class="invoice-form-file">
+                    {% csrf_token %}
                     <fieldset>
                         <div class="mb-3 inputs-file">
-                            <input class="form-control" type="file" id="img_file" multiple>
+                            <input class="form-control" type="file" name="img-file" id="img_file" multiple>
                             <input class="btn btn-primary" type="submit" value="Submit">
                         </div>
                         

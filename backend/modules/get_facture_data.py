@@ -114,9 +114,20 @@ def get_invoice_total(datas):
 def get_facture_data_pipeline(data_):
     facture_text = data_['text']
     facture_text_list = data_['text'].lower().replace("]", "l").split('\n')
-    facture_datas=  {
-        "id": get_invoice_id(facture_text_list)
+    print("________________________________")
+    print(facture_text_list)
+    print("________________________________")
+    facture_datas =  {
+        "id": get_invoice_id(facture_text_list),
+        "date" : get_invoice_date(facture_text_list),
+        "name": get_invoice_name(facture_text_list),
+        "email": get_invoice_email(facture_text_list),
+        "home_adress": get_invoice_home_adress(facture_text_list),
+        "city": get_invoice_city(facture_text_list),
+        "products": get_invoice_products(facture_text_list),
+        "total": get_invoice_total(facture_text_list),
     }
+    return facture_datas
 
 
 
