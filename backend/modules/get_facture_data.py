@@ -1,5 +1,6 @@
 import re
 
+
 def main():
     get_invoice_id()
     get_invoice_date()
@@ -128,7 +129,6 @@ def get_facture_data_pipeline(data_):
         "total": get_invoice_total(facture_text_list),
     }
     return facture_datas
-
 
 
 
