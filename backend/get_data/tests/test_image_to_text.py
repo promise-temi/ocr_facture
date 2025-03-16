@@ -51,6 +51,9 @@ class Test_IMG_To_TXT(TestCase):
         self.assertRegex(text_data['text'], r'total\s+\d+\.\d+\s+euro')
 
 
+        #qr cde data doit me retourner un dictionnaire
+        self.assertIsInstance(qr_code_data, dict) 
+
         
 
     def test_image_to_text_link(self):
@@ -86,3 +89,6 @@ class Test_IMG_To_TXT(TestCase):
         self.assertRegex(text_data['text'], r'.+\s+\d+\s+.+\s+\d+\.\d+')
         #doit contenir prix total
         self.assertRegex(text_data['text'], r'total\s+\d+\.\d+\s+euro')
+
+        #qr cde data doit me retourner un dictionnaire
+        self.assertIsInstance(qr_code_data, dict) 
