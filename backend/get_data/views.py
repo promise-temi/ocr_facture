@@ -16,6 +16,7 @@ def add_invoice(request):
     if request.method == "POST":
         uploaded_link = request.POST.get('link', '')
         if uploaded_link :
+            print(uploaded_link)
             try:
                 image_text, qr_code_data = image_to_text(uploaded_link, 'url')
                 arranged_data = get_facture_data_pipeline(image_text)
@@ -37,6 +38,7 @@ def add_invoice2(request):
         if uploaded_files:
             datas_ = []
             for uploaded_file in uploaded_files:
+                print(uploaded_file)
                 try:
                     # Ouvre l'image directement avec PIL
                     image = Image.open(uploaded_file)

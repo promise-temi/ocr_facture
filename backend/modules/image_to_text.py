@@ -40,6 +40,8 @@ def image_to_text(data_, type):
 
     #image to text grace à pytesseract
     text = pytesseract.image_to_string(image_final, lang='eng', config="--psm 6")
+    #petit nettoyage du texte
+    text = text.lower().replace("]", "l")
     if text:
         print(text)
         data = {'text': text}

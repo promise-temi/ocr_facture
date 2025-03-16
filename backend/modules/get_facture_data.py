@@ -89,7 +89,7 @@ def get_invoice_city(datas):
 def get_invoice_products(datas):
     products_datas = []
     for data in datas:
-        find_products = re.search(r'(.*)\.\s+(\d+).+\s+(\d+\.\d+)\s+euro', data)
+        find_products = re.search(r'(.+)\.\s+(\d+).+\s+(\d+\.\d+)\s+euro', data)
         if find_products:
             products_data = {
                 'product' : find_products.group(1),
@@ -114,7 +114,7 @@ def get_invoice_total(datas):
 
 def get_facture_data_pipeline(data_):
     facture_text = data_['text']
-    facture_text_list = data_['text'].lower().replace("]", "l").split('\n')
+    facture_text_list = data_['text'].split('\n')
     print("________________________________")
     print(facture_text_list)
     print("________________________________")
