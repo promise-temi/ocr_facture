@@ -2,7 +2,7 @@ from PIL import Image, ImageOps, ImageEnhance
 import cv2
 import numpy as np
 def main():
-    image_preprocessing()
+    image_preprocessing() 
     mask_qrcode()
 
 def image_preprocessing(image):

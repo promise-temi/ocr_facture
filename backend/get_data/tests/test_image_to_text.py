@@ -10,8 +10,6 @@ from modules.image_to_text import image_to_text
 
 
 
-
-
 class Test_IMG_To_TXT(TestCase):
 
     
@@ -53,6 +51,17 @@ class Test_IMG_To_TXT(TestCase):
 
         #qr cde data doit me retourner un dictionnaire
         self.assertIsInstance(qr_code_data, dict) 
+        #ce dictionnaire doit contenir la clé text
+        self.assertIn('invoice_time', qr_code_data)
+        self.assertIn('genre', qr_code_data)
+        self.assertIn('birth', qr_code_data)
+        #les données de clé text du dict retourné doit contenir du text
+        self.assertIsInstance(qr_code_data['invoice_time'], str)
+        self.assertIsInstance(qr_code_data['genre'], str)
+        self.assertIsInstance(qr_code_data['birth'], str)
+        self.assertRegex(qr_code_data['invoice_time'], r'\d+:\d+:\d+')
+        self.assertRegex(qr_code_data['genre'], r'\w+')
+        self.assertRegex(qr_code_data['birth'], r'\d{4}-\d{2}-\d{2}')
 
         
 
@@ -92,3 +101,15 @@ class Test_IMG_To_TXT(TestCase):
 
         #qr cde data doit me retourner un dictionnaire
         self.assertIsInstance(qr_code_data, dict) 
+        #ce dictionnaire doit contenir la clé text
+        self.assertIn('invoice_time', qr_code_data)
+        self.assertIn('genre', qr_code_data)
+        self.assertIn('birth', qr_code_data)
+        #les données de clé text du dict retourné doit contenir du text
+        self.assertIsInstance(qr_code_data['invoice_time'], str)
+        self.assertIsInstance(qr_code_data['genre'], str)
+        self.assertIsInstance(qr_code_data['birth'], str)
+        self.assertRegex(qr_code_data['invoice_time'], r'\d+:\d+:\d+')
+        self.assertRegex(qr_code_data['genre'], r'\w+')
+        self.assertRegex(qr_code_data['birth'], r'\d{4}-\d{2}-\d{2}')
+        
