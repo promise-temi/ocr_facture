@@ -27,7 +27,7 @@ class User(models.Model):
 #Table Factures
 class Facture(models.Model):
     facture_id = models.CharField(max_length=100, null=True)
-    creation_date = models.DateField(auto_now_add=True)
+    creation_date = models.DateTimeField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
