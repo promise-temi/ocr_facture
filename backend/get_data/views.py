@@ -5,6 +5,7 @@ from PIL import Image
 #mes modules
 from modules.image_to_text import image_to_text
 from modules.get_facture_data import get_facture_data_pipeline
+from modules.database.add_facture_pipeline import add_facture_full_pipeline
 
 
 def add_invoice_page(request):
@@ -21,6 +22,7 @@ def add_invoice(request):
                 image_text, qr_code_data = image_to_text(uploaded_link, 'url')
                 arranged_data = get_facture_data_pipeline(image_text)
                 data_ = {"image_text": arranged_data, "qrcode_text": qr_code_data}
+                add_facture_full_pipeline(data_)
                 
             except Exception as e:
                 return HttpResponse(f"Erreur lors de l'ouverture de l'image: {e}", status=400)
