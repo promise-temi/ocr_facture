@@ -48,7 +48,11 @@ def add_facture_full_pipeline(data_):
     print(creation_date_formated)
     print("_________________________________________________")
     user_email = user_info['email']
-    ajouterFacture(facture_id, creation_date_formated, user_email)
+
+    resultLog = ajouterFacture(facture_id, creation_date_formated, user_email)
+    if not resultLog:
+        print('la facture existe deja')
+        return 'la facture existe deja'
 
     #reccuperation des produits dans la facture
     produits = user_info['products']

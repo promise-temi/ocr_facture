@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # MES APPS
-    'get_data'
+    'get_data',
+    'admin_interface'
 ]
 
 MIDDLEWARE = [

@@ -40,6 +40,10 @@ def ajouterFacture(facture_id, creation_date, email):
     }
     if not Facture.objects.filter(facture_id=facture_id).exists():
         facture = Facture.objects.create(**data)
+        return True
+    else:
+        return False
+    
 
 
 def definirFactureProduits(facture, product, quantity):
