@@ -1,4 +1,4 @@
-from get_data.models import Produit, User, Facture, FactureProduct
+from get_data.models import Produit, User, Facture, FactureProduct 
 
 def main():
     ajouterProduit()
@@ -31,12 +31,13 @@ def ajouterUser(name, email, adress, city, state, postal_code, type, genre, birt
         user = User.objects.create(**data)
 
 
-def ajouterFacture(facture_id, creation_date, email):
+def ajouterFacture(facture_id, creation_date, email, total):
     user_instance = User.objects.get(email=email)
     data = {
         "facture_id" : facture_id,
         "creation_date" : creation_date,
-        "user" : user_instance
+        "user" : user_instance,
+        "total": total
     }
     if not Facture.objects.filter(facture_id=facture_id).exists():
         facture = Facture.objects.create(**data)

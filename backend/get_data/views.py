@@ -8,6 +8,7 @@ from modules.get_facture_data import get_facture_data_pipeline
 from modules.add_facture import add_facture_full_pipeline
 
 
+
 def add_invoice_page(request):
     template = loader.get_template('create-invoice.html')
     context = {}  # Vous pouvez ajouter des variables si nécessaire

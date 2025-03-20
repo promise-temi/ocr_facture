@@ -29,6 +29,7 @@ class Facture(models.Model):
     facture_id = models.CharField(max_length=100, null=True)
     creation_date = models.DateTimeField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    total = models.FloatField(null=True)
 
 
 #Table des produits dans la facture 
