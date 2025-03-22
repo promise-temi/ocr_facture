@@ -35,5 +35,14 @@ def get_facture_related_user():
         print("\n \n \n###################################################")
 
 
+def get_single_facture(id):
+    facture = Facture.objects.get(facture_id=id)
+    user = facture.user
+    facture_produits = FactureProduct.objects.filter(facture=facture).select_related('product')
+    print(facture_produits.values)
+
+    return facture, user, facture_produits
+
+
 if __name__ == "__main__":
     main()

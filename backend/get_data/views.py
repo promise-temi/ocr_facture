@@ -9,6 +9,7 @@ from modules.add_facture import add_facture_full_pipeline
 
 
 
+
 def add_invoice_page(request):
     template = loader.get_template('create-invoice.html')
     context = {}  # Vous pouvez ajouter des variables si nécessaire
@@ -32,7 +33,7 @@ def add_invoice(request):
             except Exception as e:
                 return HttpResponse(f"Erreur lors de l'ouverture de l'image: {e}", status=400)
             # Retourner une réponse avec un statut 200
-            return HttpResponse(f"votre fature a été ajouté \n \n {data_}", status=200)
+            return HttpResponse(f"votre fature a été ajouté", status=200)
         else:
             return HttpResponse("Aucun fichier reçu.", status=400)
     
@@ -60,7 +61,7 @@ def add_invoice2(request):
                     datas_.append(data_)
                 except Exception as e:
                     return HttpResponse(f"Erreur lors de l'ouverture de l'image: {e}", status=400)
-            return HttpResponse(f"votre fature a été ajouté \n \n {datas_}", status=200)
+            return HttpResponse(f"votre fature a été ajouté", status=200)
         else:
             return HttpResponse("Aucun fichier reçu.", status=400)
     
