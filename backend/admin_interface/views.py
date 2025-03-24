@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 # mes modules
 from modules.get_factures import getfacture, get_facture_related_user, get_single_facture
+from modules.get_clients import get_client
 
 # Create your views here.
 def factures(request):
@@ -25,3 +26,12 @@ def info_facture(request, facture_id):
         "produits" : produits
     }
     return HttpResponse(template.render(context, request)) 
+
+def clients(requests):
+    data = get_client()
+    template = loader.get_template('clients.html')
+    context = {
+        'clients': data
+        }
+    
+    return HttpResponse(template.render(context, requests))
