@@ -12,3 +12,8 @@ def get_client():
     print(data)
     if data:
         return data
+    
+def get_single_client(id):
+    client = User.objects.get(id=id)
+    factures = Facture.objects.filter(user=client)
+    return client, factures

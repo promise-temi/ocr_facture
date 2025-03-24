@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 # mes modules
 from modules.get_factures import getfacture, get_facture_related_user, get_single_facture
-from modules.get_clients import get_client
+from modules.get_clients import get_client, get_single_client
 
 # Create your views here.
 def factures(request):
@@ -33,5 +33,16 @@ def clients(requests):
     context = {
         'clients': data
         }
+    
+    return HttpResponse(template.render(context, requests))
+
+def info_client(requests, client_id):
+    client, factures = get_single_client(client_id)
+    template = loader.get_template('info_client.html')
+    print(client_id)
+    context = {
+        "client" : client,
+        "factures" : factures,
+    }
     
     return HttpResponse(template.render(context, requests))

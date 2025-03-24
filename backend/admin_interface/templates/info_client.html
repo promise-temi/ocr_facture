@@ -52,6 +52,23 @@
             position: relative;
             top: -1px;
         }
+
+        div.fatures-tab-title{
+          margin-top: 50px;
+          background-color: #0d6efd;
+          color: white;
+          font-size: 20px;
+          
+          padding: 0px 30px;
+          padding-top: 5px;
+          padding-bottom: 0px;
+          font-weight: 600;
+          
+          text-align: left;
+      }
+      div.fatures-tab-title p {
+          padding-bottom: 10px;
+      }
     </style>
 </head>
 <body>
@@ -77,34 +94,56 @@
     <div style="display: flex; gap: 50px;">
     <div class="card" style="width: 50%;">
         <div class="card-header" style="background-color: #0d6efd; color: white;">
-          <strong>Client #1</strong>
+          <strong>Client #{{client.id}}</strong>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>nom :</strong> Promise JOHN</li>
-          <li class="list-group-item"><strong>Adresse complete :</strong><br> 37 avenue des platanes 37170 Chambray les tours</li>
-          <li class="list-group-item"><strong>email :</strong><br> promise.john3770@gmail.com</li>
-          <li class="list-group-item"><strong>sexe :</strong> F</li>
-          <li class="list-group-item"><strong>Date de naissance:</strong> 25/05/2003</li>
-          <li class="list-group-item"><strong>age :</strong> 21</li>
+          <li class="list-group-item"><strong>nom :</strong> {{client.name}}</li>
+          <li class="list-group-item"><strong>Adresse complete :</strong><br> {{client.adress}}, {{client.city}} {{client.state}} {{client.postal_code}}</li>
+          <li class="list-group-item"><strong>email :</strong><br> {{client.email}}</li>
+          <li class="list-group-item"><strong>sexe :</strong> {{client.genre}}</li>
+          <li class="list-group-item"><strong>Date de naissance:</strong> {{client.birth_day}}</li>
         </ul>
       </div>
-      <div class="card" style="width: 50%;">
-        <div class="card-header" style="background-color: #0d6efd; color:white;">
-          <strong>Factures</strong>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio </li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-      </div>
+      <ul style="margin-top: 50px;">
+        <h4>Produits succeptible de l'interesser</h4>
+        <li>produit 1</li>
+        <li>produit 2</li>
+        <li>produit 3</li>
+      </ul>
     </div>
-    <ul style="margin-top: 50px;">
-      <h4>Produits succeptible de l'interesser</h4>
-      <li>produit 1</li>
-      <li>produit 2</li>
-      <li>produit 3</li>
-    </ul>
+    
+    <div class="fatures-tab">
+      <div class="fatures-tab-title">
+          <p>Factures</p>
+      </div>
+      <table class="table">
+          <thead>
+              
+              <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Total</th>
+              </tr>
+          </thead>
+          
+          <tbody>
+              {%for facture in factures%}
+              
+
+              <tr>
+                  <td><a href="{% url 'info_facture' facture.facture_id %}">{{facture.facture_id}}</a></td>
+                  <td>{{facture.creation_date}}</td>
+                  <td>{{facture.total}} €</td>
+              </tr>
+              
+              {% empty %}
+          <tr>
+              <td colspan="4">Aucune facture trouvée.</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+  </div>
   </main>
 </body>
 </html>
