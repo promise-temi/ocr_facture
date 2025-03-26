@@ -1,11 +1,13 @@
-from django.shortcuts import render
+
 from django.http import HttpResponse
 from django.template import loader
 # mes modules
-from modules.get_factures import getfacture, get_facture_related_user, get_single_facture
+from modules.get_factures import getfacture, get_single_facture
 from modules.get_clients import get_client, get_single_client
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def factures(request):
     data = getfacture()
     template = loader.get_template('factures.html')
@@ -14,7 +16,7 @@ def factures(request):
     }  # Vous pouvez ajouter des variables si nécessaire
     return HttpResponse(template.render(context, request)) 
 
-
+@login_required
 def info_facture(request, facture_id):
     id = facture_id
     template = loader.get_template('info_facture.html')
@@ -27,6 +29,7 @@ def info_facture(request, facture_id):
     }
     return HttpResponse(template.render(context, request)) 
 
+@login_required
 def clients(requests):
     data = get_client()
     template = loader.get_template('clients.html')
@@ -36,6 +39,7 @@ def clients(requests):
     
     return HttpResponse(template.render(context, requests))
 
+@login_required
 def info_client(requests, client_id):
     client, factures = get_single_client(client_id)
     template = loader.get_template('info_client.html')

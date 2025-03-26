@@ -6,16 +6,17 @@ from PIL import Image
 from modules.image_to_text import image_to_text
 from modules.get_facture_data import get_facture_data_pipeline
 from modules.add_facture import add_facture_full_pipeline
+from django.contrib.auth.decorators import login_required
 
 
 
-
-
+@login_required
 def add_invoice_page(request):
     template = loader.get_template('create-invoice.html')
     context = {}  # Vous pouvez ajouter des variables si nécessaire
     return HttpResponse(template.render(context, request))
 
+@login_required
 def add_invoice(request):
     if request.method == "POST":
         uploaded_link = request.POST.get('link', '')
@@ -40,7 +41,7 @@ def add_invoice(request):
     
     return HttpResponse("Method not allowed", status=405)
 
-
+@login_required
 def add_invoice2(request):
     if request.method == "POST":
         uploaded_files = request.FILES.getlist('img-file', None)
