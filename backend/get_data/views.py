@@ -6,7 +6,7 @@ from PIL import Image
 from modules.image_to_text import image_to_text
 from modules.get_facture_data import get_facture_data_pipeline
 from modules.add_facture import add_facture_full_pipeline
-from modules.client_clustering import client_clust
+
 
 
 
@@ -69,7 +69,3 @@ def add_invoice2(request):
     return HttpResponse("Method not allowed", status=405)
 
 
-def client_clustering(requests):
-    client_clust()
-    return HttpResponse("done", status=200)
-    
