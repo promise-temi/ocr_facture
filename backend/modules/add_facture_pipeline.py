@@ -31,13 +31,15 @@ def ajouterUser(name, email, adress, city, state, postal_code, type, genre, birt
         user = User.objects.create(**data)
 
 
-def ajouterFacture(facture_id, creation_date, email, total):
+def ajouterFacture(facture_id, creation_date, email, total,total_produits, total_quantites):
     user_instance = User.objects.get(email=email)
     data = {
         "facture_id" : facture_id,
         "creation_date" : creation_date,
         "user" : user_instance,
-        "total": total
+        "total": total,
+        "total_product": total_produits,
+        "total_quantities": total_quantites,
     }
     if not Facture.objects.filter(facture_id=facture_id).exists():
         facture = Facture.objects.create(**data)

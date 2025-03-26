@@ -50,7 +50,18 @@ def add_facture_full_pipeline(data_):
     user_email = user_info['email']
     total = user_info['total']
 
-    resultLog = ajouterFacture(facture_id, creation_date_formated, user_email, total)
+    total_produits = 0
+    total_quantites = 0
+
+    products = image_text['products']
+    print(products)
+    for product in products:
+        total_produits = total_produits +1
+        product_quantity = int(product['quantity'])
+        total_quantites += product_quantity
+
+
+    resultLog = ajouterFacture(facture_id, creation_date_formated, user_email, total, total_produits, total_quantites)
     if not resultLog:
         print('la facture existe deja')
         return 'la facture existe deja'
