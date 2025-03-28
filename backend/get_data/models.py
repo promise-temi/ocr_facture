@@ -39,4 +39,26 @@ class FactureProduct(models.Model):
     facture = models.ForeignKey(Facture, on_delete=models.CASCADE)
     product = models.ForeignKey(Produit, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
+
+class UserClusterFeatures(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    moyenne_prix_produits = models.FloatField(null=True, blank=True)
+    moyenne_total_factures = models.FloatField(null=True, blank=True)
+    nombre_factures = models.IntegerField(null=True, blank=True)
+    code_postal_short = models.CharField(max_length=10, null=True, blank=True)
     
+
+# Table des logs
+class LogEntry(models.Model):
+    level = models.CharField(max_length=20)
+    message = models.TextField()
+    path = models.CharField(max_length=255)
+    method = models.CharField(max_length=10)
+    status_code = models.PositiveSmallIntegerField()
+    view_name = models.CharField(max_length=255, null=True, blank=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    duration = models.FloatField(null=True, blank=True)
+    extra_data = models.JSONField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+

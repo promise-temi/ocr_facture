@@ -7,7 +7,10 @@ from modules.image_to_text import image_to_text
 from modules.get_facture_data import get_facture_data_pipeline
 from modules.add_facture import add_facture_full_pipeline
 from django.contrib.auth.decorators import login_required
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 
 @login_required

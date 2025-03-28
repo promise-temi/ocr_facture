@@ -5,6 +5,8 @@ from django.template import loader
 from modules.get_factures import getfacture, get_single_facture
 from modules.get_clients import get_client, get_single_client
 from django.contrib.auth.decorators import login_required
+from modules.update_clust_data import update_all_user_features
+from modules.client_clustering import main as clustering
 
 # Create your views here.
 @login_required
@@ -36,7 +38,8 @@ def clients(requests):
     context = {
         'clients': data
         }
-    
+    update_all_user_features()
+    clustering()
     return HttpResponse(template.render(context, requests))
 
 @login_required

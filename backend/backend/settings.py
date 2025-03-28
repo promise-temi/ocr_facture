@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # MES MIDDLEWARES
+    'get_data.middleware.RequestLoggingMiddleware', 
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -129,3 +131,5 @@ LOGIN_URL = '/admin/login/'
 
 
 
+# Autorise plus de fichiers à l'upload (valeur par défaut = 1000)
+DATA_UPLOAD_MAX_NUMBER_FILES = 5000  # ou plus selon ton besoin
