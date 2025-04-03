@@ -6,10 +6,10 @@ def main():
     mask_qrcode()
 
 def image_preprocessing(image):
-    # 📌 2) Convertir en niveaux de gris
+    # Convertir en niveaux de gris
     image = ImageOps.grayscale(image)
 
-    # 📌 3) Augmenter la netteté
+    # Augmenter la netteté
     enhancer = ImageEnhance.Sharpness(image)
     image = enhancer.enhance(4.0)
 
@@ -17,7 +17,7 @@ def image_preprocessing(image):
     image_cv = np.array(image)
     image_cv = cv2.cvtColor(image_cv, cv2.COLOR_GRAY2BGR)  # Reconversion pour OpenCV
 
-    # 📌 4) Appliquer un seuillage adaptatif pour améliorer le contraste
+    #Appliquer un seuillage adaptatif pour améliorer le contraste
     image_cv = cv2.adaptiveThreshold(cv2.cvtColor(image_cv, cv2.COLOR_BGR2GRAY),
                                     255,
                                     cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
@@ -55,7 +55,7 @@ def mask_qrcode(pil_image):
     top_left = (width - 300, 0)    # coin supérieur gauche du rectangle
     bottom_right = (width, 150)    # coin inférieur droit du rectangle
 
-    # Dessiner un rectangle blanc (-1 = rempli)
+    # Dessiner un rectangle blanc pour cacher le QR code et l'image à côté
     cv2.rectangle(image_cv, top_left, bottom_right, (255, 255, 255), -1)
     
     # Reconvertir en PIL

@@ -27,7 +27,7 @@ class RequestLoggingMiddleware:
             view_name=view_name,
             ip_address=ip,
             duration=duration,
-            extra_data={}  # Ajoute ce que tu veux ici
+            extra_data={}  
         )
 
         return response

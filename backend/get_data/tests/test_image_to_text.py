@@ -80,7 +80,7 @@ class Test_IMG_To_TXT(TestCase):
         #les données de clé text du dict retourné doit contenir du text
         self.assertIsInstance(text_data['text'], str)
 
-        # dans ce texte je doit retrouver obligatoirement ces strings
+        # dans ce texte je doit retrouver obligatoirement ces données
 
         #id doit etre present
         self.assertRegex(text_data['text'], r"invoice\s+fac/\d{4}/\d+")
